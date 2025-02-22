@@ -1,50 +1,51 @@
-# React + TypeScript + Vite
+# **Frontend - Shopping Catalog**
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## **Introduction**
+This project was designed to offer a seamless and intuitive shopping experience, making it easy for users to browse products and access special discounts.
 
-Currently, two official plugins are available:
+## **Local Setup & Execution**
+To run the project locally, follow these steps:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. **Create the `.env.local` file** in the root directory.
+2. **Add the API URL** in the environment variable:
+   ```
+   VITE_API_URL=your_backend_url_here
+   ```
+3. **Install dependencies**:
+   ```sh
+   npm install
+   ```
+4. **Start the project**:
+   ```sh
+   npm run dev
+   ```
+5. Open your browser and go to **`http://localhost:5173`** (or the port defined in your environment).
 
-## Expanding the ESLint configuration
+## **Technical Choices Justification**
+- **React with Vite**: Ensures fast development with optimized builds and hot module replacement.
+- **Material UI**: Provides a professional, responsive, and consistent UI across different devices.
+- **React Hook Form**: Efficiently manages form validation and state with minimal re-renders.
+- **React Router**: Handles navigation and routing seamlessly, making the app more dynamic.
+- **Axios**: Simplifies API requests and response handling.
+- **Sonner**: Offers clean and efficient toast notifications for better user feedback.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+These choices were made to enhance **developer productivity, performance, and maintainability**, ensuring a smooth user experience.
 
-- Configure the top-level `parserOptions` property like this:
+## **Project Structure**
+The project follows a **clean and scalable architecture**:
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```
+/frontend
+│── /src
+│   │── /api         # API configuration and requests
+│   │── /interfaces  # TypeScript interfaces
+│   │── /views       # Main application views (Register, Login, Catalog)
+│   │── /routes      # Application routing configuration
+│   │── /styles      # CSS and global styles
+│   │── main.tsx     # Entry point
+│   │── App.tsx      # Root component
+│── .env.local       # Environment variables
+│── package.json     # Dependencies and scripts
+│── README.md        # Project documentation
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
